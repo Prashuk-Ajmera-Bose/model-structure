@@ -8,15 +8,11 @@
 
 import WatchKit
 import Foundation
-import ClockKit
 import CoreMotion
 
 class InterfaceController: WKInterfaceController {
     
     let cmMotion = CMMotionManager()
-    
-//    var count = 1
-//    var timeStamp = Date()
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)

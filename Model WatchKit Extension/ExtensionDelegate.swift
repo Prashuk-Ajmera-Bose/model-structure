@@ -80,15 +80,12 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WKExtendedRuntimeSession
     // MARK: WKExtended Runtime Session Delegate
     
     func extendedRuntimeSession(_ extendedRuntimeSession: WKExtendedRuntimeSession, didInvalidateWith reason: WKExtendedRuntimeSessionInvalidationReason, error: Error?) {
-        print("extendedRuntimeSession - ", getStateForExtendedRuntimeSession())
     }
     
     func extendedRuntimeSessionDidStart(_ extendedRuntimeSession: WKExtendedRuntimeSession) {
-        print("extendedRuntimeSessionDidStart - ", getStateForExtendedRuntimeSession())
     }
     
     func extendedRuntimeSessionWillExpire(_ extendedRuntimeSession: WKExtendedRuntimeSession) {
-
     }
     
     func getStateForExtendedRuntimeSession() {

@@ -10,29 +10,32 @@ import WatchKit
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate, WKExtendedRuntimeSessionDelegate {
 
+    // Instance
     let wkSession = WKExtendedRuntimeSession()
     
+    // Variables
     var flag = 0
     var count = 1
     
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
+        
         wkSession.delegate = self
     }
 
     func applicationDidBecomeActive() {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
         if flag == 0 {
             flag = 1
         } else {
             wkSession.invalidate()
-            print("*********************************************************************")
             print("Session \(count - 1) stopped")
-            print("*********************************************************************")
         }
+        
         wkSession.start()
+        
         print("Session \(count) started")
-        print("*********************************************************************")
         count = count + 1
     }
 
@@ -42,9 +45,11 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WKExtendedRuntimeSession
     }
     
     func applicationDidEnterBackground() {
+        // Use this method when you are about to go Background
     }
     
     func applicationWillEnterForeground() {
+        // Use this method when you are about to go Foreground
     }
 
     func handle(_ backgroundTasks: Set<WKRefreshBackgroundTask>) {
@@ -80,14 +85,20 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WKExtendedRuntimeSession
     // MARK: WKExtended Runtime Session Delegate
     
     func extendedRuntimeSession(_ extendedRuntimeSession: WKExtendedRuntimeSession, didInvalidateWith reason: WKExtendedRuntimeSessionInvalidationReason, error: Error?) {
+        
     }
     
     func extendedRuntimeSessionDidStart(_ extendedRuntimeSession: WKExtendedRuntimeSession) {
+        
     }
     
     func extendedRuntimeSessionWillExpire(_ extendedRuntimeSession: WKExtendedRuntimeSession) {
+        
     }
     
+    // MARK: User Defined Functions
+    
+    // Get state  for Extended Runtime Session
     func getStateForExtendedRuntimeSession() {
         switch wkSession.state {
         case .notStarted:
@@ -103,6 +114,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WKExtendedRuntimeSession
         }
     }
     
+    // Get state  for Extended Runtime Session
     func getApplicationState() {
         switch WKExtension().applicationState {
         case .active:

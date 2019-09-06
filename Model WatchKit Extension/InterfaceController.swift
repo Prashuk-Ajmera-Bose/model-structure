@@ -12,12 +12,11 @@ import CoreMotion
 
 class InterfaceController: WKInterfaceController {
     
+    // Instance
     let cmMotion = CMMotionManager()
-    let fileName = "data"
-    let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
     
-    var dataList = [String]()
-    
+    var sampleDataCount = 0
+        
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
     }
@@ -30,6 +29,12 @@ class InterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
     
+    // MARK: Button Actions
+    
+    @IBAction func getIMUDataBtnPressed() {
+        myDeviceMotion()
+    }
+    
     // MARK: User Defined Functions
     
     func myDeviceMotion() {
@@ -37,37 +42,12 @@ class InterfaceController: WKInterfaceController {
            self.cmMotion.deviceMotionUpdateInterval = 1.0 / 60.0
            self.cmMotion.showsDeviceMovementDisplay = true
            self.cmMotion.startDeviceMotionUpdates(to: OperationQueue.current!) { (data, error) in
-              if let newData = data {
-                print(newData.userAcceleration, newData.rotationRate)
-                let dataStr = String(describing: newData)
-//                self.dataList.append(contentsOf: dataStr.map(String.init))
-//                print(self.dir)
-//                if let fileURL = self.dir?.appendingPathComponent(self.fileName).appendingPathExtension("txt") {
-//                    let outString = dataStr
-//                    do {
-//                        try outString.write(to: fileURL, atomically: true, encoding: .utf8)
-//                    } catch {
-//                        print("Failed writing to URL: \(fileURL), Error: " + error.localizedDescription)
-//                    }
-//                }
-                
+              if let sampleData = data {
+                print(sampleData)
+                self.sampleDataCount = self.sampleDataCount + 1
               }
            }
         }
-    }
-    
-    // MARK: Button Actions
-    
-    @IBAction func startSessionBtnPressed() {
-        
-    }
-    
-    @IBAction func getRuntimeStateBtnPressed() {
-        
-    }
-    
-    @IBAction func getIMUDataBtnPressed() {
-        myDeviceMotion()
     }
     
 }

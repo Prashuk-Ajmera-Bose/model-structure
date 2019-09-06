@@ -11,16 +11,6 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Model_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <button width="1" alignment="left" title="Start Session" id="530-ns-Sje">
-                            <connections>
-                                <action selector="startSessionBtnPressed" destination="AgC-eL-Hgc" id="UTF-zV-Aog"/>
-                            </connections>
-                        </button>
-                        <button width="1" alignment="left" title="Get Runtime State" id="yrG-PJ-7pg">
-                            <connections>
-                                <action selector="getRuntimeStateBtnPressed" destination="AgC-eL-Hgc" id="9jN-Nh-NKc"/>
-                            </connections>
-                        </button>
                         <button width="1" alignment="left" title="Get IMU Data" id="wZp-2S-QYW">
                             <connections>
                                 <action selector="getIMUDataBtnPressed" destination="AgC-eL-Hgc" id="AJl-dj-krC"/>

@@ -16,6 +16,7 @@ DerivedData/
 *.perspectivev3
 !default.perspectivev3
 xcuserdata/
+*.DS_Store
 
 ## Other
 *.moved-aside
@@ -39,4 +40,4 @@ playground.xcworkspace
 # Package.pins
 # Package.resolved
 .build/
-
+.DS_Store

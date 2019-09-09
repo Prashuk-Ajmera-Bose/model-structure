@@ -19,14 +19,17 @@ class InterfaceController: WKInterfaceController {
         
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
+        
     }
     
     override func willActivate() {
         super.willActivate()
+        
     }
     
     override func didDeactivate() {
         super.didDeactivate()
+        
     }
     
     // MARK: Button Actions
@@ -39,14 +42,17 @@ class InterfaceController: WKInterfaceController {
     
     func myDeviceMotion() {
        if cmMotion.isDeviceMotionAvailable {
-           self.cmMotion.deviceMotionUpdateInterval = 1.0 / 60.0
-           self.cmMotion.showsDeviceMovementDisplay = true
-           self.cmMotion.startDeviceMotionUpdates(to: OperationQueue.current!) { (data, error) in
-              if let sampleData = data {
+           
+        self.cmMotion.deviceMotionUpdateInterval = 1.0 / 60.0
+        self.cmMotion.showsDeviceMovementDisplay = true
+        self.cmMotion.startDeviceMotionUpdates(to: OperationQueue.current!) { (data, error) in
+            if let sampleData = data {
+                
                 print(sampleData)
                 self.sampleDataCount = self.sampleDataCount + 1
-              }
-           }
+                
+            }
+        }
         }
     }
     
